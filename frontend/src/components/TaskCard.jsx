@@ -8,29 +8,33 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
   useEffect(() => {
     const dueDate = new Date(task.dueDateTime);
     const currentTime = new Date();
-  
+
     const timeDifference = dueDate.getTime() - currentTime.getTime();
-  
+
     const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
-  
-    const formattedDays = days === 0 ? '' : days < 0 ? `-${days}d` : `${days}d`;
+    const hours = Math.floor(
+      (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    const minutes = Math.floor(
+      (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+    );
+
+    const formattedDays = days === 0 ? "" : days < 0 ? `-${days}d` : `${days}d`;
     const formattedHours = hours < 0 ? `${hours}h` : `${hours}h`;
     const formattedMinutes = minutes < 0 ? `${minutes}m` : `${minutes}m`;
 
-    if(task.status ==="Completed"){
-        setRemainingTime('Done')
-    }else if(timeDifference<0){
-      setRemainingTime('Over Due')
-    }else{
-        setRemainingTime(`${formattedDays} ${formattedHours} ${formattedMinutes} remaining`);
+    if (task.status === "Completed") {
+      setRemainingTime("Done");
+    } else if (timeDifference < 0) {
+      setRemainingTime("Over Due");
+    } else {
+      setRemainingTime(
+        `${formattedDays} ${formattedHours} ${formattedMinutes} remaining`
+      );
     }
 
-    setDt(task.dueDateTime.split('T').join(' '))
-
+    setDt(task.dueDateTime.split("T").join(" "));
   }, [task.dueDateTime, task.status]);
-
 
   return (
     <Box
@@ -38,7 +42,13 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
       borderWidth="1px"
       borderRadius="md"
       boxShadow="md"
-      bg={task.status === "Completed" ? "#E6FEEB" : task.status === "Started" ? "#F0F0FF" : "#FCF7E9"} 
+      bg={
+        task.status === "Completed"
+          ? "#E6FEEB"
+          : task.status === "Started"
+          ? "#F0F0FF"
+          : "#FCF7E9"
+      }
       maxW="md"
       w="100%"
     >
@@ -61,10 +71,18 @@ const TaskCard = ({ task, onEdit, onDelete }) => {
           Tags: {task.tags}
         </Text>
         <HStack mt={4}>
-          <Button colorScheme="blue" variant={'outline'} onClick={() => onEdit(task)}>
+          <Button
+            colorScheme="blue"
+            variant={"outline"}
+            onClick={() => onEdit(task)}
+          >
             Edit
           </Button>
-          <Button colorScheme="red" variant={'outline'} onClick={() => onDelete(task._id)}>
+          <Button
+            colorScheme="red"
+            variant={"outline"}
+            onClick={() => onDelete(task._id)}
+          >
             Delete
           </Button>
         </HStack>

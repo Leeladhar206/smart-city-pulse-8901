@@ -19,8 +19,13 @@ export const TasksHome = () => {
     <div>
       {" "}
       <TabPanel>
-        <Flex gap={10} w={{base:'100%' ,md:"90%"}} m={"auto"} flexDirection={{base:'column', md:'row'}}>
-          <Box w={{base:'100%' ,md:"50%"}}>
+        <Flex
+          gap={10}
+          w={{ base: "100%", md: "90%" }}
+          m={"auto"}
+          flexDirection={{ base: "column", md: "row" }}
+        >
+          <Box w={{ base: "100%", md: "50%" }}>
             <AspectRatio
               display={"flex"}
               justifyContent={"center"}
@@ -34,16 +39,26 @@ export const TasksHome = () => {
               />
             </AspectRatio>
           </Box>
-          <Box w={{base:'100%' ,md:"50%"}} mt={10}>
+          <Box w={{ base: "100%", md: "50%" }} mt={10}>
             <Heading size={"2xl"} mb={10}>
               Tasks & Projects
             </Heading>
-            <Text w={{base:'100%' ,md:"80%"}} fontSize={"2xl"} textAlign={{base:'center'}}>
+            <Text
+              w={{ base: "100%", md: "80%" }}
+              fontSize={"2xl"}
+              textAlign={{ base: "center" }}
+            >
               Plan, track, & manage projects of any size, from simple to
               complex-across your team from one easy-to-use platform.
             </Text>
 
-            <Flex w={"80%"} gap={"15%"} mt={10} fontSize={"2xl"} flexDirection={{base:'column', md:'row'}}>
+            <Flex
+              w={"80%"}
+              gap={"15%"}
+              mt={10}
+              fontSize={"2xl"}
+              flexDirection={{ base: "column", md: "row" }}
+            >
               <Box>
                 <List spacing={5}>
                   <ListItem>
@@ -60,7 +75,7 @@ export const TasksHome = () => {
                   </ListItem>
                 </List>
               </Box>
-              <Box mt={{base:5}}>
+              <Box mt={{ base: 5 }}>
                 <List spacing={5}>
                   <ListItem>
                     <ListIcon as={MdCheckCircle} color="green.500" />
@@ -74,8 +89,8 @@ export const TasksHome = () => {
               </Box>
             </Flex>
             <Button
-            display={'block'}
-            m={{base:'auto', md:10}}
+              display={"block"}
+              m={{ base: "auto", md: 10 }}
               mt={10}
               h={"60px"}
               bg={"#4573D2"}

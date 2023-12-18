@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Modal,
   ModalOverlay,
@@ -12,13 +12,12 @@ import {
   FormLabel,
   Input,
   Textarea,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 const AddProject = ({ isOpen, onClose, onAddProject }) => {
-    
   const [projectData, setProjectData] = useState({
-    name: '',
-    description: '',
+    name: "",
+    description: "",
   });
 
   const handleChange = (e) => {

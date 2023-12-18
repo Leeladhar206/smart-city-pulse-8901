@@ -39,7 +39,7 @@ export const Deadlines = () => {
             <Text
               w={{ base: "100%", md: "80%" }}
               fontSize={"2xl"}
-              textAlign={{ base: "center" ,md:'left'}}
+              textAlign={{ base: "center", md: "left" }}
             >
               Allocate tasks efficiently with Aspireo Plan and monitor work
               hours with Aspireo Track. This two-way integration provides a

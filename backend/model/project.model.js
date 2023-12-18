@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const projectSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -8,12 +8,12 @@ const projectSchema = new mongoose.Schema({
     {
       title: { type: String },
       status: { type: String },
-      collaboratorId:{ type: String } 
-    }
+      collaboratorId: { type: String },
+    },
   ],
-  chats:[String]
+  chats: [String],
 });
 
-const ProjectModel = mongoose.model('Project', projectSchema);
+const ProjectModel = mongoose.model("Project", projectSchema);
 
-module.exports = {ProjectModel};
+module.exports = { ProjectModel };

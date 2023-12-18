@@ -1,155 +1,176 @@
-import React,{useState} from 'react'
-import styled, { keyframes } from 'styled-components';
-import { useToast } from '@chakra-ui/react'
-import { useDispatch,useSelector } from "react-redux";
-import { Login, SignUp } from '../redux/userReducer/action';
+import React, { useState } from "react";
+import styled, { keyframes } from "styled-components";
+import { useToast } from "@chakra-ui/react";
+import { useDispatch, useSelector } from "react-redux";
+import { Login, SignUp } from "../redux/userReducer/action";
 
 export const LoginPage = () => {
-    const dispatch=useDispatch()
-    const message=useSelector(store=>store.userReducer.message)
-    const toast = useToast()
+  const dispatch = useDispatch();
+  const message = useSelector((store) => store.userReducer.message);
+  const toast = useToast();
 
-    const [showLoginForm, setShowLoginForm] = useState(true);
-    const [showSignUpForm, setShowSignUpForm] = useState(false);
-    const [password,setpass]=useState("")
-    const[email,setemail]=useState("")
-    const[name,setname]=useState("")
-    const[confirmPassword,setconfirmPassword]=useState("")
+  const [showLoginForm, setShowLoginForm] = useState(true);
+  const [showSignUpForm, setShowSignUpForm] = useState(false);
+  const [password, setpass] = useState("");
+  const [email, setemail] = useState("");
+  const [name, setname] = useState("");
+  const [confirmPassword, setconfirmPassword] = useState("");
 
-    const toggleForm = (formType) => {
-      if (formType === 'login') {
-        setShowLoginForm(true);
-        setShowSignUpForm(false);
-      } else {
-        setShowLoginForm(false);
-        setShowSignUpForm(true);
-      }
-    };
-    const handlelogin=(e)=>{
-      e.preventDefault()
-      let payload={
-        email,
-        password
-      }
-      if(email===""||password===""){
-        toast({
-          title: "Error",
-          description: "Please fill out all fields.",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-           position:"top",
-        })
-      }
-      else{
-      dispatch(Login(payload,toast))
-      }
+  const toggleForm = (formType) => {
+    if (formType === "login") {
+      setShowLoginForm(true);
+      setShowSignUpForm(false);
+    } else {
+      setShowLoginForm(false);
+      setShowSignUpForm(true);
     }
-    const handle = (e) => {
-      e.preventDefault();
+  };
+  const handlelogin = (e) => {
+    e.preventDefault();
+    let payload = {
+      email,
+      password,
+    };
+    if (email === "" || password === "") {
+      toast({
+        title: "Error",
+        description: "Please fill out all fields.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+    } else {
+      dispatch(Login(payload, toast));
+    }
+  };
+  const handle = (e) => {
+    e.preventDefault();
 
-      let obj={
-        email,
-        password,
-        confirmPassword
-      }
-     obj.userName= name;
+    let obj = {
+      email,
+      password,
+      confirmPassword,
+    };
+    obj.userName = name;
 
     //  console.log(obj)
 
-      if(email===""||password===""||name===""||confirmPassword===""){
-        toast({
-          title: "Error",
-          description: "Please fill out all fields.",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-           position:"top",
-        })
-      }
-      else{
-      dispatch(SignUp(obj,toast))
-      }
-    
+    if (
+      email === "" ||
+      password === "" ||
+      name === "" ||
+      confirmPassword === ""
+    ) {
+      toast({
+        title: "Error",
+        description: "Please fill out all fields.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+        position: "top",
+      });
+    } else {
+      dispatch(SignUp(obj, toast));
     }
-  
-   
-    return (
-        <Body>
-          <LoginBox>
-            <LoginSnip>
-              <TabInput id="tab-1" name="tab" className="sign-in" defaultChecked />
-              <TabLabel htmlFor="tab-1" onClick={() => toggleForm('login')}>
-                Login
-              </TabLabel>
-    
-              <TabInput id="tab-2" name="tab" className="sign-up" />
-              <TabLabel htmlFor="tab-2" onClick={() => toggleForm('signup')}>
-                Sign Up
-              </TabLabel>
-    
+  };
 
-             {showLoginForm?
-              <LoginForm showForm={showLoginForm}>
-                   <div>
-                    <p>Email</p>
-                    <Input placeholder='Enter your Email' type='text' onChange={(e)=>setemail(e.target.value)}></Input>
-                   </div>
-                  <br/>
-                  <br/>
-                   <div>
-                    <p>password</p>
-                    <Input placeholder='Enter your password' type='text' onChange={(e)=>setpass(e.target.value)}></Input>
-                   </div>
-                   <br/>
-                   <br/>
-                   
-                   <Button onClick={handlelogin} >Login</Button>
-                   
-              </LoginForm>
-               :""}
-              {showSignUpForm?
-              <LoginForm showForm={showSignUpForm}>
+  return (
+    <Body>
+      <LoginBox>
+        <LoginSnip>
+          <TabInput id="tab-1" name="tab" className="sign-in" defaultChecked />
+          <TabLabel htmlFor="tab-1" onClick={() => toggleForm("login")}>
+            Login
+          </TabLabel>
+
+          <TabInput id="tab-2" name="tab" className="sign-up" />
+          <TabLabel htmlFor="tab-2" onClick={() => toggleForm("signup")}>
+            Sign Up
+          </TabLabel>
+
+          {showLoginForm ? (
+            <LoginForm showForm={showLoginForm}>
               <div>
-                    <p>Name</p>
-                    <Input placeholder='Enter your name' type='text' onChange={(e)=>setname(e.target.value)}></Input>
-                   </div>
-               <br></br>
+                <p>Email</p>
+                <Input
+                  placeholder="Enter your Email"
+                  type="text"
+                  onChange={(e) => setemail(e.target.value)}
+                ></Input>
+              </div>
+              <br />
+              <br />
               <div>
-                    <p>Email</p>
-                    <Input placeholder='Enter your Email' type='text' onChange={(e)=>setemail(e.target.value)}></Input>
-                   </div>
-                   <br></br>
-                   <div>
-                    <p>password</p>
-                    <Input placeholder='Create password' type='text' onChange={(e)=>setpass(e.target.value)}></Input>
-                   </div>
-                   <br></br>
-                   <div>
-                    <p> confirm password</p>
-                    <Input placeholder='Enter same password' type='text'onChange={(e)=>setconfirmPassword(e.target.value)}></Input>
-                   </div>
-                   <br/>
-                   <br/>
-                   <Button onClick={handle}>Sign Up</Button>
-                  
-              </LoginForm>
-             :""}
-            </LoginSnip>
-          </LoginBox>
-         
-        </Body>
-      )
-}
+                <p>password</p>
+                <Input
+                  placeholder="Enter your password"
+                  type="text"
+                  onChange={(e) => setpass(e.target.value)}
+                ></Input>
+              </div>
+              <br />
+              <br />
 
-
-
-
+              <Button onClick={handlelogin}>Login</Button>
+            </LoginForm>
+          ) : (
+            ""
+          )}
+          {showSignUpForm ? (
+            <LoginForm showForm={showSignUpForm}>
+              <div>
+                <p>Name</p>
+                <Input
+                  placeholder="Enter your name"
+                  type="text"
+                  onChange={(e) => setname(e.target.value)}
+                ></Input>
+              </div>
+              <br></br>
+              <div>
+                <p>Email</p>
+                <Input
+                  placeholder="Enter your Email"
+                  type="text"
+                  onChange={(e) => setemail(e.target.value)}
+                ></Input>
+              </div>
+              <br></br>
+              <div>
+                <p>password</p>
+                <Input
+                  placeholder="Create password"
+                  type="text"
+                  onChange={(e) => setpass(e.target.value)}
+                ></Input>
+              </div>
+              <br></br>
+              <div>
+                <p> confirm password</p>
+                <Input
+                  placeholder="Enter same password"
+                  type="text"
+                  onChange={(e) => setconfirmPassword(e.target.value)}
+                ></Input>
+              </div>
+              <br />
+              <br />
+              <Button onClick={handle}>Sign Up</Button>
+            </LoginForm>
+          ) : (
+            ""
+          )}
+        </LoginSnip>
+      </LoginBox>
+    </Body>
+  );
+};
 
 const Body = styled.div`
   margin: 30px;
   color: #6a6f8c;
-  font: 700 16px/18px 'Open Sans', sans-serif;
+  font: 700 16px/18px "Open Sans", sans-serif;
 `;
 
 const LoginBox = styled.div`
@@ -207,7 +228,7 @@ const LoginForm = styled.div`
     ${(props) => (props.showForm ? slideIn : slideOut)} 0.8s ease-in-out;
 `;
 
-const TabInput = styled.input.attrs({ type: 'radio' })`
+const TabInput = styled.input.attrs({ type: "radio" })`
   display: none;
 `;
 
@@ -254,12 +275,11 @@ const Button = styled.button`
   color: black;
 
   @media (max-width: 576px) {
-    width:100%;
+    width: 100%;
     margin-left: 0;
   }
 
   @media (min-width: 577px) and (max-width: 992px) {
-   
     margin-left: 20%;
   }
 `;

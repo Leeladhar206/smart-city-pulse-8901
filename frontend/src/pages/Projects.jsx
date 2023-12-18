@@ -73,7 +73,7 @@ export const Projects = () => {
   useEffect(() => {
     dispatch(getProjectsFun(token));
     dispatch(getAllUsersFun(token));
-  }, [dispatch, refresh,setRefresh]);
+  }, [dispatch, refresh, setRefresh]);
 
   // console.log(projects,users);
 

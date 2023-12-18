@@ -26,14 +26,14 @@ export const Tasks = () => {
     (store) => store.taskReducer
   );
 
-  const token= localStorage.getItem("token");
+  const token = localStorage.getItem("token");
 
   const dispatch = useDispatch();
 
   console.log(tasks, isLoading, isError);
 
   const handleAddTask = (taskData) => {
-    dispatch(addTaskFun(taskData,token));
+    dispatch(addTaskFun(taskData, token));
     setRefresh(!refresh);
   };
 
@@ -44,26 +44,28 @@ export const Tasks = () => {
 
   const handleUpdateTask = (updatedTaskData, taskId) => {
     setUpdateTaskModalOpen(false);
-    dispatch(updateTaskFun(updatedTaskData, taskId,token));
+    dispatch(updateTaskFun(updatedTaskData, taskId, token));
     setRefresh(!refresh);
   };
 
   const handleDeleteTask = (taskId) => {
     // console.log(taskId);
-    dispatch(deleteTaskFun(taskId,token));
+    dispatch(deleteTaskFun(taskId, token));
     setRefresh(!refresh);
   };
 
   const totalTasks = tasks.length;
-  
-  const completedTasks = tasks.filter((task) => task.status === "Completed").length;
+
+  const completedTasks = tasks.filter(
+    (task) => task.status === "Completed"
+  ).length;
   const overdueTasks = tasks.filter((task) => {
     const currentDate = new Date();
     const dueDate = new Date(task.dueDateTime);
     return task.status !== "Completed" && dueDate < currentDate;
   }).length;
 
-  const percentage= Math.floor((completedTasks / totalTasks) * 100)
+  const percentage = Math.floor((completedTasks / totalTasks) * 100);
 
   const completionPercentage = totalTasks === 0 ? 0 : percentage;
 
@@ -89,7 +91,7 @@ export const Tasks = () => {
   const compareDueDate = (taskA, taskB) => {
     const dateA = new Date(taskA.dueDateTime).getTime();
     const dateB = new Date(taskB.dueDateTime).getTime();
-    
+
     if (taskA.status === "Completed" && taskB.status === "Completed") {
       return 0;
     } else if (taskA.status === "Completed") {
@@ -106,14 +108,14 @@ export const Tasks = () => {
 
   const comparePriority = (taskA, taskB) => {
     const priorityOrder = { Low: 0, Medium: 10, High: 20 };
-    
+
     if (taskA.status === "Completed" && taskB.status === "Completed") {
       return 0;
     } else if (taskA.status === "Completed") {
       return 1;
     } else if (taskB.status === "Completed") {
       return -1;
-    }else if (prioritySort === "asc") {
+    } else if (prioritySort === "asc") {
       return priorityOrder[taskA.priority] - priorityOrder[taskB.priority];
     } else if (prioritySort === "desc") {
       return priorityOrder[taskB.priority] - priorityOrder[taskA.priority];

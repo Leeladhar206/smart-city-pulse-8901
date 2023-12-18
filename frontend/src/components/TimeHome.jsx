@@ -29,7 +29,11 @@ export const TimeHome = () => {
             <Heading size={"2xl"} mb={10}>
               Time Tracking
             </Heading>
-            <Text w={"80%"} fontSize={"2xl"} textAlign={{ base: "center" ,md:'left'}}>
+            <Text
+              w={"80%"}
+              fontSize={"2xl"}
+              textAlign={{ base: "center", md: "left" }}
+            >
               Plan, track, & manage projects of any size, from simple to
               complex-across your team from one easy-to-use platform.
             </Text>

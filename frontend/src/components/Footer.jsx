@@ -10,7 +10,7 @@ import { FaTwitter } from "react-icons/fa";
 
 export const Footer = () => {
   return (
-    <Box bg={'blue.50'} mt={10}>
+    <Box bg={"blue.50"} mt={10}>
       <Flex
         w={"80%"}
         m={"auto"}
@@ -19,7 +19,7 @@ export const Footer = () => {
         fontSize={"md"}
       >
         <Box w={"15%"}>
-          <Image src={Aspireo} w={"80%"} borderRadius={'40px'}/>
+          <Image src={Aspireo} w={"80%"} borderRadius={"40px"} />
           <Text
             display={"flex"}
             fontSize={"lg"}

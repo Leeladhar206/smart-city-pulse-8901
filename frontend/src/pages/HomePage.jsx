@@ -45,13 +45,21 @@ export const HomePage = () => {
           </Text>
           <Flex
             w={"50%"}
-            m={'auto'}
+            m={"auto"}
             gap={2}
             justifyContent={"space-around"}
             alignItems={"center"}
             pt={10}
           >
-            <Input placeholder="email" size="lg" w={"50%"} outline="#4573D2" border={'2px solid #06113C'} h={'60px'} borderRadius={'30px'}/>
+            <Input
+              placeholder="email"
+              size="lg"
+              w={"50%"}
+              outline="#4573D2"
+              border={"2px solid #06113C"}
+              h={"60px"}
+              borderRadius={"30px"}
+            />
             <Button
               h="60px"
               bgColor={"#06113C"}
@@ -212,8 +220,7 @@ export const HomePage = () => {
         </Collapse>
       </Box>
 
-      <Footer/>
-      
+      <Footer />
     </>
   );
 };

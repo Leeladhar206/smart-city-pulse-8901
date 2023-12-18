@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const morgan = require('morgan')
+const morgan = require("morgan");
 const { connection } = require("./connection");
 
 const { taskRouter } = require("./routes/task.routes");
@@ -17,19 +17,23 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.use(morgan('common', {
-  stream: {
-    write: async (log) => {
-      try {
-        await LogModel.findOneAndUpdate({}, { $push: { logs: log } }, { upsert: true });
-      } catch (err) {
-        console.error('Error saving log to MongoDB:', err);
-      }
+app.use(
+  morgan("common", {
+    stream: {
+      write: async (log) => {
+        try {
+          await LogModel.findOneAndUpdate(
+            {},
+            { $push: { logs: log } },
+            { upsert: true }
+          );
+        } catch (err) {
+          console.error("Error saving log to MongoDB:", err);
+        }
+      },
     },
-  },
-}));
-
-
+  })
+);
 
 app.use("/users", userRouter);
 app.use("/tasks", taskRouter);
@@ -51,4 +55,3 @@ app.listen(PORT, async () => {
     console.log("Index Error", error.message);
   }
 });
-

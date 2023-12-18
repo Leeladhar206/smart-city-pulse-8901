@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const taskSchema = new mongoose.Schema({
   title: {
@@ -13,16 +13,16 @@ const taskSchema = new mongoose.Schema({
   },
   priority: {
     type: String,
-    enum: ['Low', 'Medium', 'High'],
-    default: 'Medium',
+    enum: ["Low", "Medium", "High"],
+    default: "Medium",
   },
   tags: {
     type: String,
   },
   status: {
     type: String,
-    enum: ['Not Started', 'Started', 'On Going', 'Completed'],
-    default: 'Not Started',
+    enum: ["Not Started", "Started", "On Going", "Completed"],
+    default: "Not Started",
   },
   userId: {
     type: String,
@@ -32,10 +32,10 @@ const taskSchema = new mongoose.Schema({
   },
   createdAt: {
     type: String,
-    default: Date()
+    default: Date(),
   },
 });
 
-const TaskModel = mongoose.model('Task', taskSchema);
+const TaskModel = mongoose.model("Task", taskSchema);
 
-module.exports = {TaskModel};
+module.exports = { TaskModel };

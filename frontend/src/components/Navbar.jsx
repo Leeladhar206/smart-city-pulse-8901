@@ -45,7 +45,6 @@ export const Navbar = () => {
       fontFamily="Lexend, sans-serif"
       w={{ base: "100%", md: "100%" }}
       m="auto"
-      
     >
       <Box dangerouslySetInnerHTML={{ __html: newFont }} textAlign={"left"} />
 
@@ -64,7 +63,6 @@ export const Navbar = () => {
                   <Link to="/signup">Signup</Link>
                   <Link to="/login">Login</Link>
                   <Link to="/projects">Projects</Link>
-               
                 </VStack>
               </DrawerBody>
             </DrawerContent>
@@ -103,7 +101,6 @@ export const Navbar = () => {
         ml={{ base: 0, md: 10 }}
         mb={2}
         gap={{ base: "10px", md: "none" }}
-       
       >
         <Link to="/">Home</Link>
         <Link to="/tasks">Tasks</Link>
